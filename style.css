@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.contenedor {
+    text-align: center;
+    width: 100%;
+}
+
+/* TEXTO PRESIONA */
+.indicacion {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: parpadeo 1s infinite;
+}
+
+/* CORAZÓN MÁS GRANDE */
+.corazon {
+    width: 180px;
+    height: 180px;
+    background: red;
+    position: relative;
+    transform: rotate(-45deg);
+    margin: 0 auto;
+    cursor: pointer;
+    animation: latido 1s infinite;
+}
+
+.corazon::before,
+.corazon::after {
+    content: "";
+    width: 180px;
+    height: 180px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.corazon::before {
+    top: -90px;
+    left: 0;
+}
+
+.corazon::after {
+    left: 90px;
+    top: 0;
+}
+
+/* Flechas */
+.flechas {
+    font-size: 35px;
+    margin-top: 15px;
+    color: white;
+    animation: moverFlecha 1s infinite alternate;
+}
+
+/* Animaciones */
+@keyframes latido {
+    0% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.2); }
+    100% { transform: rotate(-45deg) scale(1); }
+}
+
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+@keyframes moverFlecha {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-10px); }
+}
+
+/* CARTA */
+.carta {
+    display: none;
+    margin: 40px auto 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    width: 80%;
+    max-width: 700px;
+    height: 400px;
+    overflow-y: auto;
+    text-align: left;
+    position: relative;
+    border: 12px solid #2e8b57;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    animation: aparecer 0.6s ease;
+}
+
+.carta h1 {
+    text-align: center;
+}
+
+.carta p {
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.carta::before {
+    content: "🌿 🌿 🌿 🌿 🌿 🌿 🌿 🌿 🌿 🌿";
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+}
+
+.carta::after {
+    content: "";
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
